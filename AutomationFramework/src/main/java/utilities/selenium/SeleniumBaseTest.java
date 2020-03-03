@@ -5,6 +5,8 @@ import com.relevantcodes.extentreports.ExtentTest;
 
 import utilities.exceptions.EnvironmentNotSetException;
 
+
+
 public class SeleniumBaseTest {
 	
 		public static ExtentReports extent;
@@ -18,13 +20,18 @@ public class SeleniumBaseTest {
 		public static String suiteName;
 		public static String url ;
 	    public static String browserDriver;
+		
 		public static String currentTest;
 		public static String featureName;
+
 		public static String scenarioName;
+
 		public static String scenarioStatus;
 		
 		/**
 		 * Get the environment value
+		 * 
+		 * @return Environment
 		 */
 		public String getEnvironment() {
 			if (environment == null || environment.equals("")) {
@@ -36,6 +43,9 @@ public class SeleniumBaseTest {
 
 		/**
 		 * Set the environment value
+		 * 
+		 * @param environment
+		 *            Environment to be set
 		 */
 		public  void setEnvironment(String environment) {
 			this.environment = environment;

@@ -44,6 +44,10 @@ public class Log
 			byte[] imageBytes = IOUtils.toByteArray(is);
 			Driver.pause(2);
 			String base64 = Base64.getEncoder().encodeToString(imageBytes);
+			
+//			SeleniumBaseTest.parent.log(LogStatus.INFO, "Screenshot:"
+//					+ SeleniumBaseTest.parent.addBase64ScreenShot("data:image/png;base64,"+base64));
+			
 			SeleniumBaseTest.child.log(LogStatus.INFO, "Screenshot:"
 					+ SeleniumBaseTest.child.addBase64ScreenShot("data:image/png;base64,"+base64));
 		}
@@ -83,7 +87,9 @@ public class Log
 	}
 	
 	/**
-	 * Print action of what's happening
+	 * Print action of what's happening followed by "..."
+	 * 
+	 * @param info The string you want to print. Ex). Clicking 'Save' Button
 	 */
 	public static void printAction(String info)
 	{

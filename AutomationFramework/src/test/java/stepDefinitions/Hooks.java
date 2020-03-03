@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.testng.Assert;
 
+import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
 
 import baseClass.AppTest;
@@ -21,7 +22,6 @@ import utilities.extentreport.ExtentManager;
 import utilities.extentreport.ExtentTestManager;
 import utilities.parameters.ParameterTable;
 import utilities.selenium.Driver;
-import utilities.selenium.ExcelDataConfig;
 import utilities.selenium.Log;
 import utilities.selenium.SeleniumBaseTest;
 
@@ -30,8 +30,8 @@ public class Hooks extends AppTest{
 	static String endTime;
 	static String startTime;
 	static int count = 0;
+	
 	@Before
-
 	public void start(Scenario scenario) throws Exception {
 		Log.clearWorkflowSteps();
 		Calendar cal = Calendar.getInstance();
@@ -48,10 +48,16 @@ public class Hooks extends AppTest{
 		System.out.println("Sc Name : " + scenario.getName());
 
 		SeleniumBaseTest.scenarioName = scenario.getName();
-
+		ExtentReports ex = ExtentManager.getReporter();
+		ex.startTest(SeleniumBaseTest.scenarioName);
 		SeleniumBaseTest.parent = ExtentManager.getReporter().startTest(SeleniumBaseTest.scenarioName);
 
 		String root = System.getProperty("user.dir");
+		/*
+		 * File file = new File( root +
+		 * "\\src\\test\\resources\\ParameterFiles\\" + SeleniumBaseTest.scenarioName + "
+		 * _parameters.txt");
+		 */
 
 		String[] cmd = { "cmd.exe", "/c",
 				"del \"" + root + "\\src\\test\\resources\\ParameterFiles\\" + SeleniumBaseTest.scenarioName
@@ -71,6 +77,7 @@ public class Hooks extends AppTest{
 				if (line == null) {
 					break;
 				}
+				// System.out.println(line);
 			}
 		} catch (IOException e) {
 			Assert.fail("An error occured while trying to delete old test data");
@@ -87,6 +94,21 @@ public class Hooks extends AppTest{
 		SeleniumBaseTest.url = ParameterTable.get("appURL");
 
 		Log.printScenarioStart();
+//		
+//		if(count > 0 ) {
+//			if(Driver.Instance.toString().contains("null"))
+//			{
+//
+//				System.out.print("All Browser windows are closed ");
+//				}
+//				else
+//				{
+//				//close open window
+//					Driver.Instance.close();
+//				}
+//		 }
+//		 count++;
+		
 		Driver.initialize(SeleniumBaseTest.currentBrowser, SeleniumBaseTest.browserDriver);
 		Driver.Instance.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		Driver.Instance.get(SeleniumBaseTest.url);
@@ -128,6 +150,7 @@ public class Hooks extends AppTest{
 		String timeTaken = p3 + "m" + p1 + "s";
 		System.out.print("MM:SS - " + p3 + "m" + p1 + "s");
 
+		//ExcelDataConfig.createExcelSheet("CreateExcel.xlsx", "ExecutionDetails", SeleniumBaseTest.scenarioName, OrderProcessFlow.orderNum, timeTaken,SeleniumBaseTest.scenarioStatus);
 		child.setDescription(Log.getWorkflowSteps());
 		SeleniumBaseTest.parent.appendChild(SeleniumBaseTest.child);
 		ParameterTable.printToFile();

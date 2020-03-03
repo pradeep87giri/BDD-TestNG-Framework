@@ -1,3 +1,5 @@
+<Dell i7 8gb Price> <$700>
 <environment> <UAT>
+<Sony vaio i5 Price> <$790>
 <appURL> <https://www.demoblaze.com/index.html>
 *

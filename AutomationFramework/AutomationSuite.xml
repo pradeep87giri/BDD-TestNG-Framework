@@ -8,43 +8,11 @@
 	
 	<parameter name="dataFile" value="src/test/resources/DataSheet.xlsx" />
 	<parameter name="sheet" value="EnvironmentDetails" />
-	<!-- <parameter name="sheet" value="LocatorsDetails" />  -->
-	<!-- <parameter name="sheet" value="DatabaseDetails" />  -->
 	<parameter name="browserDriver" value="//Library//webdrivers//chromedriver.exe" />
 
     <listeners>
         <listener class-name="cucumberTest.TestNGExecutionListener"></listener>
     </listeners> 
-    
-    <test name="OnitCreateMatter" enabled="false">
-		 <classes>
-			<class name="testRunners.Onit_CreateMatter" />
-		</classes>
-	</test>
-	
-	<test name="OnitReviewMatter" enabled="false">
-		 <classes>
-			<class name="testRunners.Onit_ReviewMatter" />
-		</classes>
-	</test>
-	
-	<test name="OnitUpdateBasicMatter" enabled="false">
-		 <classes>
-			<class name="testRunners.Onit_UpdateBasicMatter" />
-		</classes>
-	</test>
-
-	<test name="OnitCloseReopenMatter" enabled="false">
-		 <classes>
-			<class name="testRunners.Onit_CloseReopenMatter" />
-		</classes>
-	</test>
-	
-	<test name="OnitUpdateAdvanceMatter" enabled="false">
-		 <classes>
-			<class name="testRunners.Onit_UpdateAdvanceMatter" />
-		</classes>
-	</test>
 	
 	<test name="DemoBlaze" enabled="true">
 		 <classes>
