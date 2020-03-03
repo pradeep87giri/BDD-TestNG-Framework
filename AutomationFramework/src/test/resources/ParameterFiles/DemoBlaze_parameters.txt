@@ -1,0 +1,3 @@
+<environment> <UAT>
+<appURL> <https://www.demoblaze.com/index.html>
+*

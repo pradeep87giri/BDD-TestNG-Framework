@@ -1,0 +1,6 @@
+test-output/
+bin/
+.classpath
+data/parameters.txt
+doc/
+/target/
